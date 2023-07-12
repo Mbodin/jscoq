@@ -1,0 +1,29 @@
+{
+	"name": "jscoq",
+	"version": "2.0",
+	"description": "The jsCoq Interactive Proof System",
+	"license": "AGPL-3.0-or-later",
+	"esy": {
+		"build": [ "dune build -p #{self.name} -j 4" ],
+		"buildsInSource": "_build"
+	},
+	"dependencies": {
+		"ocaml": ">=4.12.0",
+		"@opam/ocamlfind": "1.9.5",
+		"@opam/dune": ">=3.5.0",
+		"@opam/js_of_ocaml": "~4.1",
+		"@opam/js_of_ocaml-ppx": "*",
+		"@opam/js_of_ocaml-lwt": "*",
+		"@opam/yojson": ">=2.0.2",
+		"@opam/ppx_deriving_yojson": ">=3.5.3",
+		"@opam/ppx_import": ">=1.8.0",
+		"@opam/lwt_ppx": ">=2.0.1",
+		"@opam/sexplib": ">=v0.14.0",
+		"@opam/ppx_sexp_conv": ">=v0.14.1 <v0.15",
+		"@opam/ppx_hash": ">=v0.14.0 <v0.15",
+		"@opam/ppx_compare": ">=v0.14.0 <v0.15",
+		"@opam/zarith": ">=1.11",
+		"@opam/zarith_stubs_js": ">=v0.14.0"
+	}
+}
+
