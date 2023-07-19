@@ -28,7 +28,7 @@ endif
 BUILD_CONTEXT = jscoq$(VARIANT)
 BUILDDIR = _build/$(BUILD_CONTEXT)
 
-OPAMENV = eval `opam env --set-switch --switch $(BUILD_CONTEXT)`
+OPAMENV = true # eval `opam env --set-switch --switch $(BUILD_CONTEXT)`
 DUNE = $(OPAMENV) && dune
 
 # ugly but I couldn't find a better way
