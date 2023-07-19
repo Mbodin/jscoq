@@ -131,7 +131,8 @@ bundle-webpack:
 
 typecheck:
 	$(DUNE) build node_modules
-	$(DUNE) exec --context=$(BUILD_CONTEXT) -- npm run typecheck
+	#$(DUNE) exec --context=$(BUILD_CONTEXT) -- npm run typecheck
+	$(DUNE) exec -- npm run typecheck
 
 # Build symbol database files for autocomplete
 coq-pkgs/%.symb.json: coq-pkgs/%.coq-pkg
@@ -146,7 +147,8 @@ libs-symb: ${patsubst %.coq-pkg, %.symb.json, ${wildcard coq-pkgs/*.coq-pkg}}
 .PHONY: test watch serve dev
 
 test:
-	$(DUNE) exec --context=$(BUILD_CONTEXT) $(DUNE_FLAGS) -- npx mocha tests/main.js
+	#$(DUNE) exec --context=$(BUILD_CONTEXT) $(DUNE_FLAGS) -- npx mocha tests/main.js
+	$(DUNE) exec $(DUNE_FLAGS) -- npx mocha tests/main.js
 
 watch: DUNE_FLAGS+=--watch
 watch: jscoq
@@ -253,7 +255,8 @@ coq_configure=./tools/configure/configure.exe
 
 coq-get: $(COQSRC)
 	$(OPAMENV) && \
-	cd $(COQSRC) && dune exec $(DUNE_FLAGS) $(coq_configure) --context=$(BUILD_CONTEXT) -- -prefix $(COQDIR) -native-compiler no -bytecode-compiler no -coqide no
+	cd $(COQSRC) && dune exec $(DUNE_FLAGS) $(coq_configure) -- -prefix $(COQDIR) -native-compiler no -bytecode-compiler no -coqide no
+	# cd $(COQSRC) && dune exec $(DUNE_FLAGS) $(coq_configure) --context=$(BUILD_CONTEXT) -- -prefix $(COQDIR) -native-compiler no -bytecode-compiler no -coqide no
 
 coq-get-latest: COQ_BRANCH = $(COQ_BRANCH_LATEST)
 coq-get-latest: coq-get
